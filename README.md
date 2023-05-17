@@ -15,7 +15,7 @@ Trabalho realizado pelos alunos:
 - Vinycius Taglian
 
 ## Tecnologia
-- REACT NATIVE
+- REACT
 - TAILDWINDCSS
 - FRAMER MOTION
 - API REST
