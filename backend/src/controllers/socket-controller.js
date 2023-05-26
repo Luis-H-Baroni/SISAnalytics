@@ -12,3 +12,9 @@ exports.registerLog = (socket) => {
     logService.registerWorkstationLog(payload)
   })
 }
+
+exports.incidentListener = (socket) => {
+  socket.on('incident', (payload) => {
+    logService.incidentHandler(payload)
+  })
+}

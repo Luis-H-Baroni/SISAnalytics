@@ -38,6 +38,7 @@ def get_system_info():
 
 def send_data():
     sio.connect(server_url)
+    ramOverloadCount = 0
     while True:
         
         # Obtém as informações do sistema
@@ -46,6 +47,27 @@ def send_data():
 
         # Converte as informações para JSON
         json_data = json.dumps(system_info)
+
+        
+        if system_info['ram'] > 30:
+            ramOverloadCount += 1
+            print(ramOverloadCount)
+            if ramOverloadCount == 2:
+                print('RAM acima de 90%')
+                ram_json_data = json.loads(json_data)
+                ram_json_data['incidentAlias'] = 'RAM_OVERLOAD'
+                ram_json_data = json.dumps(ram_json_data)
+                sio.emit('incident', ram_json_data)
+                print(ram_json_data)
+                ramOverloadCount = 0
+
+        if system_info['rom'] > 30:
+            print('ROM acima de 80%')
+            rom_json_data = json.loads(json_data)
+            rom_json_data['incidentAlias'] = 'ROM_OVERLOAD'
+            rom_json_data = json.dumps(rom_json_data)
+            sio.emit('incident', rom_json_data)
+            print(rom_json_data)
 
         # Envia os dados para o servidor Socket.IO
         sio.emit('system_info', json_data)
