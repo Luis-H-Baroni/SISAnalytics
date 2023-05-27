@@ -1,27 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
+import { MenuItens } from './MenuItens';
 import control from '../../assets/control.png';
-import Chart_fill from '../../assets/Chart_fill.png';
-import Chat from '../../assets/Chat.png';
-import User from '../../assets/User.png';
-import Calendar from '../../assets/Calendar.png';
-import Search from '../../assets/Search.png';
-import Chart from '../../assets/Chart.png';
-import Folder from '../../assets/Folder.png';
-import Setting from '../../assets/Setting.png';
 import Sis40 from '../../assets/SISAnalytics_40.png';
 
 function Sidebar () {
   const [open, setOpen] = useState(true);
-  const Menus = [
-    { title: "Dashboard", src: Chart_fill },
-    { title: "Inbox", src: Chat },
-    { title: "Accounts", src: User, gap: true },
-    { title: "Schedule ", src: Calendar },
-    { title: "Search", src: Search },
-    { title: "Analytics", src: Chart },
-    { title: "Files ", src: Folder, gap: true },
-    { title: "Setting", src: Setting },
-  ];
+  const [path, setPath] = useState('');
+  const location = window.location.pathname;
+  
+  useEffect(() => {}, [path, location]);
 
   return (
     <div className={`${open ? 'w-72' : 'w-20'} duration-300 h-screen p-5 pt-8 bg-dark-purple relative`}>
@@ -41,24 +29,27 @@ function Sidebar () {
         <h1 className={`text-white origin-left font-medium text-x1 duration-300 ${!open && 'scale-0'}`}>SisAnalytics</h1>
       </div>
       <ul className='pt-6'>
-        {Menus.map((menu, index) => (
-          <li 
-            key={index}
-            className={`
-              text-gray-300
-              text-sm flex
-              items-center
-              gap-x-4
-              cursor-pointer
-              p-2
-              hover:bg-light-white
-              rounded-md 
-              ${menu.gap ? 'mt-9' : 'mt-2'}
-              ${index === 0 && 'bg-light-white'}`
-            }>
-            <img src={menu.src} alt='choices' />
-            <span className={`${!open && 'hidden'} origin-left duration-100`}>{menu.title}</span>
-          </li>
+        {MenuItens.map((menu, index) => (
+          <Link to={menu.path} key={index}>
+            <li 
+              onClick={() => setPath(menu.path)}
+              key={index}
+              className={`
+                text-gray-300
+                text-sm flex
+                items-center
+                gap-x-4
+                cursor-pointer
+                p-2
+                hover:bg-light-white
+                rounded-md 
+                ${menu.gap ? 'mt-9' : 'mt-2'}
+                ${location === menu.path && 'bg-light-white'}`
+              }>
+                <img src={menu.src} alt='choices' />
+                <span className={`${!open && 'hidden'} origin-left duration-100`}>{menu.title}</span>
+            </li>
+          </Link>
         ))}
       </ul>
     </div>
