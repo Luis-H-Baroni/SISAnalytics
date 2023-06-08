@@ -31,3 +31,7 @@ Trabalho realizado pelos alunos:
 - https://trello.com/w/pratica2023
 
 Open Source, Hell Yeah!!
+
+
+
+<!-- sudo service mongod start -->
