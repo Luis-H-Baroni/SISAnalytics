@@ -1,3 +1,4 @@
 const exampleSchema = require('./example-schema')
+const eventSchema = require('./event-schema')
 
-module.exports = { exampleSchema }
+module.exports = { exampleSchema, eventSchema }

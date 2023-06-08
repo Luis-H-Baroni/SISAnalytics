@@ -1,4 +1,4 @@
-const { logService } = require('../services')
+const { logService, eventService } = require('../services')
 
 exports.test = (socket) => {
   socket.on('test', (data) => {
@@ -13,8 +13,8 @@ exports.registerLog = (socket) => {
   })
 }
 
-exports.incidentListener = (socket) => {
+exports.emitEvent = (socket) => {
   socket.on('incident', (payload) => {
-    logService.incidentHandler(payload)
+    eventService.incidentHandler(payload)
   })
 }

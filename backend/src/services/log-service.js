@@ -1,6 +1,4 @@
-const { logRepository, eventRepository } = require('../repositories')
-const incidentEvents = require('../main/incident-events')
-const { incidentAdapter } = require('../utils/adapters')
+const { logRepository } = require('../repositories')
 
 exports.registerWorkstationLog = (payload) => {
   const data = JSON.parse(payload)
@@ -23,20 +21,4 @@ exports.registerWorkstationLog = (payload) => {
 exports.getLogs = async (payload) => {
   const result = await logRepository.getLogs(payload)
   return result
-}
-
-exports.incidentHandler = async (payload) => {
-  const data = JSON.parse(payload)
-
-  const incidentKey = incidentAdapter.incidentKey(data)
-
-  console.log('Incident Events', incidentEvents)
-  if (incidentEvents.has(incidentKey)) return
-
-  const event = await eventRepository.getEventById({
-    eventId: incidentKey,
-  })
-
-  incidentEvents.set(incidentKey, { ...event, log: data })
-  console.log('Incident detected', incidentEvents)
 }
