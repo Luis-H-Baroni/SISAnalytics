@@ -1,6 +1,8 @@
 const db = require('../mongodb')
+const { identifierGenerator } = require('../../../utils/helpers')
 
 const configurationItemSchema = new db.Schema({
+  configurationItemId: { type: String, default: identifierGenerator.uuid() },
   configurationItemAlias: String,
   serial: String,
   category: String,
