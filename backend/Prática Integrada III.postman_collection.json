@@ -10,7 +10,7 @@
 			"name": "Configuration Item",
 			"item": [
 				{
-					"name": "configuration-item",
+					"name": "configuration-item all",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -29,7 +29,27 @@
 					"response": []
 				},
 				{
-					"name": "configuration-item Copy",
+					"name": "configuration-item id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/configuration-item/0d066519-4651-4847-9baa-634cae0e0718",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"configuration-item",
+								"0d066519-4651-4847-9baa-634cae0e0718"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "configuration-item all",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -48,13 +68,33 @@
 					"response": []
 				},
 				{
+					"name": "configuration-item id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/configuration-item/736f4658-b3b0-4ce9-9aeb-d78772f7cd1d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"configuration-item",
+								"736f4658-b3b0-4ce9-9aeb-d78772f7cd1d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "configuration-item",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"configurationItemAlias\": \"Cafeteira\",\n  \"serial\": \"12312312\",\n  \"category\": \"cafe\",\n  \"type\": \"cage\",\n  \"model\": \"eletro\",\n  \"local\": \"cozinha\",\n  \"licenseOfUse\": \"01/01/2023\",\n  \"purchase\": \"01/01/2023\",\n  \"responsible\": \"ana\",\n  \"supplier\": \"giulietta\",\n  \"quantityOfProblems\": 1,\n  \"quantityOfIncidents\": 0,\n  \"status\": true,\n  \"comments\": \"super comentário\"\n}",
+							"raw": "{\n  \"configurationItemAlias\": \"Café\",\n  \"serial\": \"12312312\",\n  \"category\": \"cafe\",\n  \"type\": \"cage\",\n  \"model\": \"eletro\",\n  \"local\": \"cozinha\",\n  \"licenseOfUse\": \"01/01/2023\",\n  \"purchase\": \"01/01/2023\",\n  \"responsible\": \"ana\",\n  \"supplier\": \"giulietta\",\n  \"quantityOfProblems\": 1,\n  \"quantityOfIncidents\": 0,\n  \"status\": true,\n  \"comments\": \"super comentário\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
