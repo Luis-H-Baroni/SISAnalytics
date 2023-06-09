@@ -1,20 +1,39 @@
 const { configurationItemRepository } = require('../repositories')
+const { ConfigurationItemModel  } = require('../main/databases/schemas/')
 
 const configurationItemGetAll = async (payload) => {
-  const string = await configurationItemRepository.getConfigurationItem(payload)
+  const data = await configurationItemRepository.getConfigurationItem(payload)
 
-  const result = string + ' service aqui'
-  return result
+  return data
 }
 
-const  configurationItemCreate = async (payload) => {
-  const data = await configurationItemRepository.registerConfigurationItem(payload)
-  if(!data) throw new Error('Error creating configuration item')
+const configurationItemCreate = async (payload) => {
+  const data = await configurationItemRepository.createConfigurationItem(payload)
+  
+  return data
+}
+
+const configurationItemDeleteId = async (id) => {
+  const data = await configurationItemRepository.deleteConfigurationItemId(id)
+  
+  return data
+}
+
+const configurationItemDeleteAll = async () => {
+  return ConfigurationItemModel.deleteMany({})
+}
+
+const configurationItemGetId = async (id) => {
+  const data = await configurationItemRepository.getConfigurationItemById(id)
   return data
 }
 
 
+
 module.exports = {
   configurationItemGetAll,
-  configurationItemCreate
+  configurationItemCreate,
+  configurationItemDeleteId,
+  configurationItemDeleteAll,
+  configurationItemGetId
 }
