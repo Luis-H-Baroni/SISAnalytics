@@ -1,8 +1,8 @@
 function TopTitleButton({ title = 'Title', button = 'Button', onClickFunction = () => { } }) {
-  const handleOnClick = (e) => {
-    console.log('handleOnClick')
-    onClickFunction(e);
-  };
+  // const handleOnClick = (e) => {
+  //   console.log('handleOnClick')
+  //   onClickFunction(e);
+  // };
 
   return (
     <div className="grid grid-cols-2 gap-2">

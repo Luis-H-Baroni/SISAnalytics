@@ -1,6 +1,8 @@
 import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import 'react-toastify/dist/ReactToastify.css';
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import Home from './routes/Home';
@@ -14,6 +16,18 @@ import About from './routes/About';
 function App() {
   return (
     <BrowserRouter>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <div className='flex'>
         <Sidebar />
         <div  className="p-7 text-2x1 font-semibold flex-1 h-screen">
