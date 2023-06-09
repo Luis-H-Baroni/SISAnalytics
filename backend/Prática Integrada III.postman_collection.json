@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "5bbcbe9f-d748-406e-8e7e-c81b971237b8",
+		"name": "Prática Integrada III",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7532989"
+	},
+	"item": [
+		{
+			"name": "Configuration Item",
+			"item": [
+				{
+					"name": "configuration-item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/configuration-item",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"configuration-item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "configuration-item Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/configuration-item",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"configuration-item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "configuration-item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"configurationItemAlias\": \"Cafeteira\",\n  \"serial\": \"12312312\",\n  \"category\": \"cafe\",\n  \"type\": \"cage\",\n  \"model\": \"eletro\",\n  \"local\": \"cozinha\",\n  \"licenseOfUse\": \"01/01/2023\",\n  \"purchase\": \"01/01/2023\",\n  \"responsible\": \"ana\",\n  \"supplier\": \"giulietta\",\n  \"quantityOfProblems\": 1,\n  \"quantityOfIncidents\": 0,\n  \"status\": true,\n  \"comments\": \"super comentário\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/configuration-item",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"configuration-item"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Logs",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/configuration-item",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"configuration-item"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

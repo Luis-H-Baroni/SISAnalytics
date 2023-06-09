@@ -1,6 +1,6 @@
 const { ConfigurationItemModel } = require('../main/databases/schemas')
 
-exports.registerConfigurationItem = async (payload) => {
+exports.createConfigurationItem = async (payload) => {
   const result = ConfigurationItemModel.create(payload)
 
   return result
@@ -12,9 +12,15 @@ exports.getConfigurationItem = async (payload) => {
   return result
 }
 
-exports.getConfigurationItemById = async (payload) => {
-  const query = ConfigurationItemModel.find(payload)
+exports.getConfigurationItemById = async (id) => {
+  const result = ConfigurationItemModel.find({ configurationItemId: id })
 
-  const result = await query.lean().exec()
-  return result[0]
+  return result
 }
+
+exports.deleteConfigurationItemId = async (id) => {
+  const result = await ConfigurationItemModel.deleteOne({ configurationItemId: id })
+
+  return result
+}
+
