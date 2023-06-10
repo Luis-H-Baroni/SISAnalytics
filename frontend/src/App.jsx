@@ -30,7 +30,7 @@ function App() {
       />
       <div className='flex'>
         <Sidebar />
-        <div  className="p-7 text-2x1 font-semibold flex-1 h-screen">
+        <div className="p-7 text-2x1 font-semibold flex-1 h-screen">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/configurationItems" element={<ConfigurationItems />} />

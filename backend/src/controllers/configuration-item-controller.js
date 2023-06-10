@@ -40,7 +40,6 @@ exports.configurationItemCreate = async (req, res) => {
 exports.configurationItemDeleteId = async (req, res) => {
   try {
     const data = await configurationItemService.configurationItemDeleteId(req.params.id)
-    console.log(data, !data)
     if(data.deletedCount === 0){
       return res.status(200).json({status: 200, message: 'Nenhum item de configuração foi removido.'})
     }

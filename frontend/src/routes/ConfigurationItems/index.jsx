@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
 import TopTitleButton from '../../components/TopTitleButton';
 import Modal from '../../components/Modal';
+import Table from '../../components/Table';
 import { validateBlankValue } from '../../helpers';
-import { addConfigurationItem } from './service/api';
+import { addConfigurationItem, getConfigurationItems } from './service/api';
 
 
 function ConfigurationItems () {
   const [open, setOpen] = useState(false);
+  const [configurationItemsList, setConfigurationItemsList] = useState();
   const [configurationItemsAdd, setConfigurationItemsAdd] = useState([
     {
       configurationItemAlias: '',
@@ -60,9 +62,14 @@ function ConfigurationItems () {
     });
   };
 
-  return (
-    <>
-      <TopTitleButton title='Itens de Configuração' button='Adicionar +' onClickFunction={(e) => setOpen(true) }/>
+  useEffect(() => {
+    (async () => {
+      setConfigurationItemsList(await getConfigurationItems());
+    })();
+  }, []);
+
+  const handleRenderModal = () => {
+    return (
       <Modal open={open} onClose={() => setOpen(false)}>
         <div className='text-center w-full'>
           Cadastro de Item de Configuração
@@ -270,6 +277,21 @@ function ConfigurationItems () {
           </div>
         </div>
       </Modal>
+    )
+  };
+
+  const handleHeader = [
+    { name: 'Identificação', key: 'id' },
+    { name: 'Nome', key: 'name' },
+    { name: 'Modelo', key: 'model' },
+    { name: 'Ação', key: 'actions' },
+  ];
+
+  return (
+    <>
+      <TopTitleButton title='Itens de Configuração' button='Adicionar +' onClickFunction={(e) => setOpen(true) }/>
+      {open && handleRenderModal()}
+      <Table headers={handleHeader} data={configurationItemsList} />
     </>
   );
 }
