@@ -291,7 +291,7 @@ function ConfigurationItems () {
     <>
       <TopTitleButton title='Itens de Configuração' button='Adicionar +' onClickFunction={(e) => setOpen(true) }/>
       {open && handleRenderModal()}
-      <Table headers={handleHeader} data={configurationItemsList} />
+      <Table headers={handleHeader} data={configurationItemsList} id={configurationItemsAdd[0].configurationItemId} />
     </>
   );
 }

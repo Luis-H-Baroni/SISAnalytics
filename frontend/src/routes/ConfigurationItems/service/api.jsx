@@ -15,3 +15,8 @@ export const getConfigurationItems = async () => {
   console.log(response)
   return response.data;
 }
+
+export const deleteConfigurationItem = async (id) => {
+  const response = await api.delete(`configuration-item/${id}`);
+  return response.data;
+}
