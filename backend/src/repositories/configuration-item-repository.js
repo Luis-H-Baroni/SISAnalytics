@@ -13,14 +13,16 @@ exports.getConfigurationItem = async (payload) => {
 }
 
 exports.getConfigurationItemById = async (id) => {
-  const result = ConfigurationItemModel.find({ configurationItemId: id })
+  const query = ConfigurationItemModel.find({ configurationItemId: id })
 
-  return result
+  const result = await query.lean().exec()
+  return result[0]
 }
 
 exports.deleteConfigurationItemId = async (id) => {
-  const result = await ConfigurationItemModel.deleteOne({ configurationItemId: id })
+  const result = await ConfigurationItemModel.deleteOne({
+    configurationItemId: id,
+  })
 
   return result
 }
-

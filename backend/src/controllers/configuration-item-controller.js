@@ -2,7 +2,9 @@ const { configurationItemService } = require('../services')
 
 exports.configurationItemController = async (req, res) => {
   try {
-    const data = await configurationItemService.configurationItemGetAll(req.body)
+    const data = await configurationItemService.configurationItemGetAll(
+      req.body
+    )
 
     return res.status(200).json(data)
   } catch (error) {
@@ -13,10 +15,12 @@ exports.configurationItemController = async (req, res) => {
 
 exports.configurationItemGetId = async (req, res) => {
   try {
-    const data = await configurationItemService.configurationItemGetId(req.params.id)
-    if(data.length === 0){
-      return res.status(404).json({status: 404, message: 'Nenhum item de configuração foi encontrado.'})
-    }
+    const data = await configurationItemService.configurationItemGetId(
+      req.params.id
+    )
+
+    if (!data) return res.status(404).json({ message: 'Item não encontrado.' })
+
     return res.status(200).json(data)
   } catch (error) {
     console.error(error)
@@ -26,9 +30,9 @@ exports.configurationItemGetId = async (req, res) => {
 
 exports.configurationItemCreate = async (req, res) => {
   try {
-    let data = req.body
-    
-    data = await configurationItemService.configurationItemCreate(req.body)
+    const data = await configurationItemService.configurationItemCreate(
+      req.body
+    )
 
     return res.status(200).json(data)
   } catch (error) {
@@ -39,12 +43,13 @@ exports.configurationItemCreate = async (req, res) => {
 
 exports.configurationItemDeleteId = async (req, res) => {
   try {
-    const data = await configurationItemService.configurationItemDeleteId(req.params.id)
-    if(data.deletedCount === 0){
-      return res.status(200).json({status: 200, message: 'Nenhum item de configuração foi removido.'})
-    }
+    const data = await configurationItemService.configurationItemDeleteId(
+      req.params.id
+    )
+    if (!data) return res.status(404).json({ message: 'Item não encontrado.' })
+
     return res.status(200).json(data)
-  } catch(error) {
+  } catch (error) {
     return res.status(500).json(error)
   }
 }
@@ -52,8 +57,10 @@ exports.configurationItemDeleteId = async (req, res) => {
 exports.configurationItemDeleteAll = async (req, res) => {
   try {
     await configurationItemService.configurationItemDeleteAll()
-    return res.status(200).json({status: 200, message: 'Todos os itens de configuração foram removidos.'})
-  } catch(error) {
+    return res.status(200).json({
+      message: 'Todos os itens de configuração foram removidos.',
+    })
+  } catch (error) {
     return res.status(500).json(error)
   }
 }

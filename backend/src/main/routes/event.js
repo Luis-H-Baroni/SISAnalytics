@@ -4,25 +4,25 @@ const { requestValidator } = require('../../utils/middlewares')
 
 exports.event = (router) => {
   router
-    .route('/events')
+    .route('/event')
     .get(
       requestValidator.validate(eventSchema.getEventSchema),
       eventController.getEvents
     )
   router
-    .route('/events')
+    .route('/event')
     .post(
       requestValidator.validate(eventSchema.createEventSchema),
       eventController.createEvent
     )
   router
-    .route('/events')
+    .route('/event')
     .delete(
       requestValidator.validate(eventSchema.deleteEventSchema),
       eventController.deleteEvent
     )
   router
-    .route('/events')
+    .route('/event')
     .put(
       requestValidator.validate(eventSchema.updateEventSchema),
       eventController.updateEvent

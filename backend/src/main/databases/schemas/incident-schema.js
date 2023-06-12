@@ -1,15 +1,15 @@
 const db = require('../mongodb')
 
-const eventSchema = new db.Schema({
-  eventId: String,
-  eventAlias: String,
+const incidentSchema = new db.Schema({
+  incidentId: String,
+  incidentAlias: String,
   configurationItemId: String,
   configurationItemAlias: String,
-  workarounds: [String],
+  workaround: String,
   createdAt: { type: Date, default: Date.now() },
   updatedAt: { type: Date, default: Date.now() },
 })
 
-const EventModel = db.model('EventSchema', eventSchema)
+const IncidentModel = db.model('IncidentSchema', incidentSchema)
 
-module.exports = EventModel
+module.exports = IncidentModel

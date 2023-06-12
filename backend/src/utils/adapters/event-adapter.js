@@ -1,4 +1,4 @@
 exports.eventAlias = (payload) => {
-  const { itemAlias, incidentAlias } = payload
-  return `ITEM#${itemAlias.toUpperCase()}#INCIDENT#${incidentAlias.toUpperCase()}`
+  const { configurationItemAlias, incidentAlias } = payload
+  return `ITEM#${configurationItemAlias.toUpperCase()}#INCIDENT#${incidentAlias.toUpperCase()}`
 }
