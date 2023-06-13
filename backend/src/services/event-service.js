@@ -1,4 +1,4 @@
-const { eventRepository } = require('../repositories')
+const { eventRepository, incidentRepository } = require('../repositories')
 const { eventAdapter, incidentAdapter } = require('../utils/adapters')
 const { identifierGenerator } = require('../utils/helpers/')
 const incidentEvents = require('../main/incident-events')
@@ -18,12 +18,20 @@ exports.incidentHandler = async (payload) => {
 
   incidentEvents.set(incidentKey, { ...event, log: data })
 
-  //todo: incidentService.createIncident(data)
+  incidentRepository.createIncident({
+    incidentId: identifierGenerator.uuid(),
+    incidentAlias: event.eventAlias,
+    configurationItemId: event.configurationItemId,
+    configurationItemAlias: event.configurationItemAlias,
+    workaround: event.workaround, //todo: definir escolha de workaround
+  })
   console.log('Incident detected', incidentEvents)
 }
 
 exports.getEvents = async (payload) => {
   const result = eventRepository.getEvents(payload)
+
+  if (result.length === 0) return null
   return result
 }
 

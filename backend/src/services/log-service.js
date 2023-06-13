@@ -5,8 +5,8 @@ exports.registerWorkstationLog = (payload) => {
   const { ram, rom, cpuTemp, hostname, createdAt } = data
 
   const logRegister = {
-    itemAlias: hostname,
-    itemId: 'item-123',
+    configurationItemAlias: hostname,
+    configurationItemId: 'item-123',
     data: {
       ram,
       rom,
@@ -20,5 +20,7 @@ exports.registerWorkstationLog = (payload) => {
 
 exports.getLogs = async (payload) => {
   const result = await logRepository.getLogs(payload)
+
+  if (result.length === 0) return null
   return result
 }

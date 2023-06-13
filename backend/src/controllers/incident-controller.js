@@ -1,9 +1,9 @@
-const { eventService, configurationItemService } = require('../services')
+const { incidentService, configurationItemService } = require('../services')
 
-exports.getEvents = async (req, res) => {
+exports.getIncidents = async (req, res) => {
   try {
     console.log(req.query)
-    const result = await eventService.getEvents(req.query)
+    const result = await incidentService.getIncidents(req.query)
     return res.status(200).json(result)
   } catch (error) {
     console.error(error)
@@ -11,16 +11,15 @@ exports.getEvents = async (req, res) => {
   }
 }
 
-exports.createEvent = async (req, res) => {
+exports.createIncident = async (req, res) => {
   try {
     const existingItem = await configurationItemService.configurationItemGetId(
       req.body.configurationItemId
     )
-    console.log(existingItem)
     if (!existingItem)
       return res.status(400).json({ message: 'Item not found' })
 
-    const result = await eventService.createEvent({
+    const result = await incidentService.createIncident({
       configurationItemAlias: existingItem.configurationItemAlias,
       ...req.body,
     })
@@ -31,9 +30,9 @@ exports.createEvent = async (req, res) => {
   }
 }
 
-exports.deleteEvent = async (req, res) => {
+exports.deleteIncident = async (req, res) => {
   try {
-    const result = await eventService.deleteEvent(req.body)
+    const result = await incidentService.deleteIncident(req.body)
     return res.status(200).json(result)
   } catch (error) {
     console.error(error)
@@ -41,9 +40,12 @@ exports.deleteEvent = async (req, res) => {
   }
 }
 
-exports.updateEvent = async (req, res) => {
+exports.updateIncident = async (req, res) => {
   try {
-    const result = await eventService.updateEvent({ ...req.query, ...req.body })
+    const result = await incidentService.updateIncident({
+      ...req.query,
+      ...req.body,
+    })
     return res.status(200).json(result)
   } catch (error) {
     console.error(error)

@@ -3,8 +3,8 @@ const { identifierGenerator } = require('../../../utils/helpers')
 
 const logSchema = new db.Schema({
   logId: { type: String, default: identifierGenerator.uuid() },
-  itemAlias: String,
-  itemId: String,
+  configurationItemAlias: String,
+  configurationItemId: String,
   data: {},
   createdAt: { type: Date },
 })
