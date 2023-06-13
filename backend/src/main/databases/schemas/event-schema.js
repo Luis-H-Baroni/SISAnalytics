@@ -6,6 +6,9 @@ const eventSchema = new db.Schema({
   configurationItemId: String,
   configurationItemAlias: String,
   workarounds: [String],
+  impact: Number,
+  urgency: Number,
+  priority: Number,
   createdAt: { type: Date, default: Date.now() },
   updatedAt: { type: Date, default: Date.now() },
 })
