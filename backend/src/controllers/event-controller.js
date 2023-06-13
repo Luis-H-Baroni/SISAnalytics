@@ -53,7 +53,14 @@ exports.updateEvent = async (req, res) => {
 
 exports.createWorkaround = async (req, res) => {
   try {
-    const result = await eventService.createWorkaround(req.body)
+    const existingEvent = await eventService.getEventById(req.body.eventId)
+    if (!existingEvent)
+      return res.status(400).json({ message: 'Event not found' })
+
+    const result = await eventService.createWorkaround({
+      eventId: existingEvent.eventId,
+      workaround: req.body.workaround,
+    })
     return res.status(200).json(result)
   } catch (error) {
     console.error(error)

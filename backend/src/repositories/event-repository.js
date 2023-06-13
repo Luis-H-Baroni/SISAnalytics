@@ -1,7 +1,7 @@
 const { EventModel } = require('../main/databases/schemas')
 
-exports.createEvent = (payload) => {
-  const result = EventModel.create(payload)
+exports.createEvent = async (payload) => {
+  const result = await EventModel.create(payload)
   return result
 }
 
@@ -15,6 +15,14 @@ exports.getEventByEventAlias = async (payload) => {
   const query = EventModel.find(payload)
 
   const result = await query.lean().exec()
+  return result[0]
+}
+
+exports.getEventById = async (id) => {
+  const query = EventModel.find({ eventId: id })
+
+  const result = await query.lean().exec()
+  console.log(result)
   return result[0]
 }
 
