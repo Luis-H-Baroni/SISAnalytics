@@ -27,4 +27,11 @@ exports.event = (router) => {
       requestValidator.validate(eventSchema.updateEventSchema),
       eventController.updateEvent
     )
+
+  router
+    .route('/event/workaround')
+    .post(
+      requestValidator.validate(eventSchema.createWorkaroundSchema),
+      eventController.createWorkaround
+    )
 }

@@ -2,6 +2,7 @@ const { eventRepository, incidentRepository } = require('../repositories')
 const { eventAdapter, incidentAdapter } = require('../utils/adapters')
 const { identifierGenerator } = require('../utils/helpers/')
 const incidentEvents = require('../main/incident-events')
+const priorityMatrix = require('../main/priority-matrix')
 
 exports.incidentHandler = async (payload) => {
   const data = JSON.parse(payload)
@@ -37,9 +38,16 @@ exports.getEvents = async (payload) => {
 
 exports.createEvent = async (payload) => {
   const eventAlias = eventAdapter.eventAlias(payload)
+
+  const priority = priorityMatrix.getPriorityNumber(
+    payload.urgency,
+    payload.impact
+  )
+
   const data = {
     eventId: payload.eventId ?? identifierGenerator.uuid(),
     eventAlias,
+    priority,
     ...payload,
   }
   const result = eventRepository.createEvent(data)
@@ -54,5 +62,10 @@ exports.deleteEvent = async (payload) => {
 exports.updateEvent = async (payload) => {
   console.log(payload)
   const result = eventRepository.updateEvent(payload)
+  return result
+}
+
+exports.createWorkaround = async (payload) => {
+  const result = eventRepository.createWorkaround(payload)
   return result
 }

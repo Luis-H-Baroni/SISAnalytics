@@ -30,3 +30,11 @@ exports.updateEvent = async (payload) => {
   )
   return result
 }
+
+exports.createWorkaround = async (payload) => {
+  const result = await EventModel.updateOne(
+    { eventId: payload.eventId },
+    { $push: { workarounds: payload.workaround } }
+  )
+  return result
+}
