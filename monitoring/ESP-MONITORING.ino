@@ -47,6 +47,10 @@ void loop() {
       Serial.println("°F");      
       delay(2000);
 
+      String strTempC = String(tempC, 2);
+      String strTempF = String(tempF, 2);
+      String strHumi = String(humi, 2);
+      
       HTTPClient http;
 
       // Configurar a URL do servidor e o caminho do endpoint
@@ -56,7 +60,7 @@ void loop() {
       http.addHeader("Content-Type", "application/json");
     
       // Configurar o corpo da requisição POST
-      String requestBody = "{\"itemAlias\":\"teste\",\"itemId\":\"1234\",\"data\":{\"celsius\":tempC,\"fareinheit\":tempF,\"umidity\":humi}}";
+      String requestBody = "{\"itemAlias\":\"teste\",\"itemId\":\"1234\",\"data\":{\"celsius\":"+strTempC+",\"fareinheit\":"+strTempF+",\"umidity\":"+strHumi+"}}";
       
       // Enviar a requisição POST
       Serial.print(requestBody);
