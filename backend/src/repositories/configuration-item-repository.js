@@ -6,14 +6,23 @@ exports.createConfigurationItem = async (payload) => {
   return result
 }
 
+exports.updateConfigurationItemId = async (id, payload) => {
+  const result = await ConfigurationItemModel.updateOne(
+    { configurationItemId: id },
+    payload
+  )
+
+  return result
+}
+
 exports.getConfigurationItem = async (payload) => {
   console.log(payload)
   const result = await ConfigurationItemModel.find(payload)
   return result
 }
 
-exports.getConfigurationItemById = async (id) => {
-  const query = ConfigurationItemModel.find({ configurationItemId: id })
+exports.getConfigurationItemById = async (id, payload) => {
+  const query = ConfigurationItemModel.find({ configurationItemId: id, payload })
 
   const result = await query.lean().exec()
   return result[0]

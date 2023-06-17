@@ -15,6 +15,17 @@ const configurationItemCreate = async (payload) => {
   return data
 }
 
+const configurationItemUpdateId = async (id, payload) => {
+  const data = await configurationItemRepository.updateConfigurationItemId(
+    id,
+    payload
+  )
+
+  if (!data) return null
+  return data
+}
+
+
 const configurationItemDeleteId = async (id) => {
   const data = await configurationItemRepository.deleteConfigurationItemId(id)
 
@@ -36,6 +47,7 @@ const configurationItemGetId = async (id) => {
 module.exports = {
   configurationItemGetAll,
   configurationItemCreate,
+  configurationItemUpdateId,
   configurationItemDeleteId,
   configurationItemDeleteAll,
   configurationItemGetId,

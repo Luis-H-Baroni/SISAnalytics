@@ -1,9 +1,10 @@
 import React from 'react';
+import Button from '../Button';
 
-function Modal({ open, onClose, children }) {  
+function Modal({ open, onClose, onConfirm, children }) {  
   return (
     <div
-      onClick={ onClose }
+      onClick={onClose}
       className={`
         fixed inset-0 flex justify-center items-center
         transition-colors
@@ -18,11 +19,15 @@ function Modal({ open, onClose, children }) {
         `}
       >
         <button 
-          onClick={ onClose }
+          onClick={onClose}
           className='absolute top-2 right-3 p-1 rounded-lg text-gray-400 bg-white hover:bg-gray-50 hover:text-gray-600'>
           X
         </button>
         { children }
+        <div className="flex gap-4">
+          <Button type='button-confirm' onClick={onConfirm}>Confirmar</Button>
+          <Button type='button-cancel' onClick={onClose}> Cancelar </Button>
+        </div>
       </div>
     </div>
   );
