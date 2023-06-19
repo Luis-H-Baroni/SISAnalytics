@@ -4,10 +4,11 @@ const { log } = require('./log')
 const { configurationItem } = require('./configuration-item')
 const { event } = require('./event')
 const { incident } = require('./incident')
+const { solution } = require('./solution')
 
 const router = Router()
 
-const routes = { example, log, event, configurationItem, incident }
+const routes = { example, log, event, configurationItem, incident, solution }
 
 for (const route in routes) {
   routes[route](router)

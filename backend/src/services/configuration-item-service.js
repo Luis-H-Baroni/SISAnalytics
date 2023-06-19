@@ -1,5 +1,6 @@
 const { configurationItemRepository } = require('../repositories')
 const { ConfigurationItemModel } = require('../main/databases/schemas/')
+const { identifierGenerator } = require('../utils/helpers/')
 
 const configurationItemGetAll = async (payload) => {
   const data = await configurationItemRepository.getConfigurationItem(payload)
@@ -8,11 +9,14 @@ const configurationItemGetAll = async (payload) => {
 }
 
 const configurationItemCreate = async (payload) => {
-  const data = await configurationItemRepository.createConfigurationItem(
-    payload
-  )
+  const data = {
+    configurationItemId: payload.configurationItemId ?? identifierGenerator.uuid(),
+    ...payload,
+  }
+  
+  const result = await configurationItemRepository.createConfigurationItem(data)
 
-  return data
+  return result
 }
 
 const configurationItemUpdateId = async (id, payload) => {
@@ -39,7 +43,6 @@ const configurationItemDeleteAll = async () => {
 
 const configurationItemGetId = async (id) => {
   const data = await configurationItemRepository.getConfigurationItemById(id)
-  console.log(data)
   if (!data) return null
   return data
 }
