@@ -40,20 +40,20 @@ function Solution () {
         setIsEdit(false);
         setId(null);
         clearForm();
-        return toast.success('Item de configuração editado com sucesso!');
+        return toast.success('Solução editada com sucesso!');
       } else {
         const data = solutionObj[0];
         await addSolution(data);
         setOpen(false);
         clearForm();
-        return toast.success('Item de configuração cadastrado com sucesso!');
+        return toast.success('Solução cadastrada com sucesso!');
       }
     } catch(e) {
       let message = '';
       if(isEdit) {
-        message = 'Erro ao editar item de configuração!';
+        message = 'Erro ao editar solução!';
       } else {
-        message = 'Erro ao cadastrar item de configuração!';
+        message = 'Erro ao cadastrar solução!';
       }
       return toast.error(e.response.data.error || message);
     }

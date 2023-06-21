@@ -6,7 +6,6 @@ exports.createIncident = (payload) => {
 }
 
 exports.getIncidents = async (payload) => {
-  console.log(payload)
   const result = await IncidentModel.find(payload)
   return result
 }
