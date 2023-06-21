@@ -65,3 +65,13 @@ exports.getSolutionId = async (req, res) => {
     return res.status(500).json(error)
   }
 }
+
+exports.deleteAllSolution = async (req, res) => {
+  try {
+    const result = await solutionService.deleteAllSolution()
+    return res.status(200).json(result)
+  } catch (error) {
+    console.error(error)
+    return res.status(500).json(error)
+  }
+}

@@ -8,5 +8,5 @@ exports.solution = (router) => {
   router.route('/solution').post(requestValidator.validate(solutionSchema), solutionController.createSolution)
   router.route('/solution/:id').put(solutionController.updateSolution)
   router.route('/solution/:id').delete(solutionController.deleteSolution)
-
+  router.route('/solution').delete(solutionController.deleteAllSolution)
 }

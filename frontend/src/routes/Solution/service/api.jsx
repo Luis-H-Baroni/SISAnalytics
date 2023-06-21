@@ -3,6 +3,7 @@ import { api } from '../../../services/http';
 export const getSolution = async () => {
   try {
     const response = await api.get('solution');
+    console.log(response.data)
     return response.data;
   } catch(error){
     throw error;

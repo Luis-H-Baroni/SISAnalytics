@@ -30,3 +30,7 @@ exports.deleteSolution = async (payload) => {
   )
   return result
 }
+
+exports.deleteAllSolution = async () => {
+  return await SolutionModel.deleteMany({})
+}
