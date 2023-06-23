@@ -13,6 +13,6 @@ export const MenuItens = [
   { title: "Eventos ", src: Calendar, path: "/events" },
   { title: "Incidentes", src: Search, path: "/incidents" },
   { title: "Soluções", src: Chart, path: "/solutions" },
-  { title: "Relatórios", src: Chat, path: "/reports" },
+  // { title: "Relatórios", src: Chat, path: "/reports" },
   { title: "Sobre", src: Setting, gap: true ,path: "/about" },
 ];

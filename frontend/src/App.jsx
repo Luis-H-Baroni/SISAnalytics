@@ -10,7 +10,7 @@ import ConfigurationItems from './routes/ConfigurationItems';
 import Events from './routes/Events';
 import Incidents from './routes/Incidents';
 import Solution from './routes/Solution';
-import Reports from './routes/Reports';
+// import Reports from './routes/Reports';
 import About from './routes/About';
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
             <Route path="/events" element={<Events />} />
             <Route path='/incidents' element={<Incidents />} />
             <Route path='/solutions' element={<Solution />} />
-            <Route path="/reports" element={<Reports />} />
+            {/* <Route path="/reports" element={<Reports />} /> */}
             <Route path="/about" element={<About />} />
           </Routes>
         </div>
