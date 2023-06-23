@@ -4,18 +4,17 @@ const { identifierGenerator } = require('../utils/helpers/')
 const incidentEvents = require('../main/incident-events')
 const priorityMatrix = require('../main/priority-matrix')
 
-exports.incidentHandler = async (payload) => {
+exports.incidentHandler = async (payload, socket) => {
   const data = JSON.parse(payload)
 
   const incidentKey = incidentAdapter.incidentKey(data)
   console.log('Incident Key', incidentKey)
-  console.log('Incident Events', incidentEvents)
+
   if (incidentEvents.has(incidentKey)) return
 
   const event = await eventRepository.getEventByEventAlias({
     eventAlias: incidentKey,
   })
-  console.log(event)
 
   incidentEvents.set(incidentKey, { ...event, log: data })
 
@@ -26,7 +25,9 @@ exports.incidentHandler = async (payload) => {
     configurationItemAlias: event.configurationItemAlias,
     workaround: event.workaround, //todo: definir escolha de workaround
   })
-  console.log('Incident detected', incidentEvents)
+  console.log('Incident detected', incidentKey)
+
+  socket.broadcast.emit('active_incident', event.eventId)
 }
 
 exports.getEvents = async (payload) => {
