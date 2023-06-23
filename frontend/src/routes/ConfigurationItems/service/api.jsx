@@ -1,22 +1,46 @@
 import { api } from '../../../services/http';
 
+export const getConfigurationItems = async () => {
+  try {
+    const response = await api.get('configuration-item');
+    return response.data;
+  } catch(error){
+    throw error;
+  }
+}
+
+export const getConfigurationItemId = async (id) => {
+  try{
+    const response = await api.get(`configuration-item/${id}`);
+    return response.data;
+  } catch(error){
+    throw error;
+  }
+}
+
 export const addConfigurationItem = async (fields) => {
-  api.post('configuration-item', fields).then((response) => {
-    return true;
-  }).catch((error) => {
-    if(error.response.status === 400 || error.response.status === 500 || error.response.status === 404){
-      return false;
-    }
-  });
+  try {
+    const response = await api.post('configuration-item', fields);
+    return response.data;
+  } catch(error){
+    throw error;
+  }
 };
 
-export const getConfigurationItems = async () => {
-  const response = await api.get('configuration-item');
-  console.log(response)
-  return response.data;
+export const editConfigurationItem = async (id, fields) => {
+  try {
+    const response = await api.put(`configuration-item/${id}`, fields);
+    return response.data;
+  } catch(error){
+    throw error;
+  }
 }
 
 export const deleteConfigurationItem = async (id) => {
-  const response = await api.delete(`configuration-item/${id}`);
-  return response.data;
+  try{
+    const response = await api.delete(`configuration-item/${id}`);
+    return response.data;  
+  } catch(error){
+    throw error;
+  }  
 }

@@ -18,13 +18,13 @@ exports.event = (router) => {
   router
     .route('/event')
     .delete(
-      requestValidator.validate(eventSchema.deleteEventSchema),
+      // requestValidator.validate(eventSchema.deleteEventSchema),
       eventController.deleteEvent
     )
   router
     .route('/event')
     .put(
-      requestValidator.validate(eventSchema.updateEventSchema),
+      // requestValidator.validate(eventSchema.updateEventSchema),
       eventController.updateEvent
     )
 

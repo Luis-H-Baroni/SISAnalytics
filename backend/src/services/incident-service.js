@@ -18,7 +18,7 @@ exports.createIncident = async (payload) => {
 }
 
 exports.deleteIncident = async (payload) => {
-  const result = incidentRepository.deleteIncident(payload)
+  const result = await incidentRepository.deleteIncident(payload)
   return result
 }
 

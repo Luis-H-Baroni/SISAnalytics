@@ -2,7 +2,6 @@ const { logService } = require('../services')
 
 exports.getLogs = async (req, res) => {
   try {
-    console.log(req.query)
     const result = await logService.getLogs(req.query)
     return res.status(200).json(result)
   } catch (error) {

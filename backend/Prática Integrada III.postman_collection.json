@@ -49,19 +49,60 @@
 					"response": []
 				},
 				{
-					"name": "configuration-item all",
+					"name": "configuration-item id put",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n    \"configurationItemAlias\": \"super teste\",\n    \"serial\": \"dsasasd\",\n    \"category\": \"sa\",\n    \"type\": \"dssssd\",\n    \"model\": \"dssssd\",\n    \"local\": \"s\",\n    \"licenseOfUse\": \"dssd\",\n    \"purchase\": \"2023-01-01T00:00:00.000Z\",\n    \"responsible\": \"Isabela\",\n    \"supplier\": \"sdsd\",\n    \"quantityOfProblems\": 2,\n    \"quantityOfIncidents\": 3,\n    \"status\": true,\n    \"comments\": \"dsdsd\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:4000/configuration-item",
+							"raw": "http://localhost:4000/configuration-item/f0b1245e-660f-44a7-9729-8814f4924df9",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "4000",
 							"path": [
-								"configuration-item"
+								"configuration-item",
+								"f0b1245e-660f-44a7-9729-8814f4924df9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "configuration-item all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/incident",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"incident"
 							]
 						}
 					},
@@ -94,7 +135,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"configurationItemAlias\": \"Café\",\n  \"serial\": \"12312312\",\n  \"category\": \"cafe\",\n  \"type\": \"cage\",\n  \"model\": \"eletro\",\n  \"local\": \"cozinha\",\n  \"licenseOfUse\": \"01/01/2023\",\n  \"purchase\": \"01/01/2023\",\n  \"responsible\": \"ana\",\n  \"supplier\": \"giulietta\",\n  \"quantityOfProblems\": 1,\n  \"quantityOfIncidents\": 0,\n  \"status\": true,\n  \"comments\": \"super comentário\"\n}",
+							"raw": "{\n  \"configurationItemAlias\": \"Café 2 teste\",\n  \"serial\": \"12312312\",\n  \"category\": \"cafe\",\n  \"type\": \"cage\",\n  \"model\": \"eletro\",\n  \"local\": \"cozinha\",\n  \"licenseOfUse\": \"2023/01/01\",\n  \"purchase\": \"2023/01/01\",\n  \"responsible\": \"ana\",\n  \"supplier\": \"giulietta\",\n  \"quantityOfProblems\": 1,\n  \"quantityOfIncidents\": 0,\n  \"status\": true,\n  \"comments\": \"super comentário\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -118,32 +159,225 @@
 			]
 		},
 		{
-			"name": "Logs",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Solution",
+			"item": [
+				{
+					"name": "solution id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/solution/64f6f4d1-4b28-4abc-8041-7d2f362af17b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"solution",
+								"64f6f4d1-4b28-4abc-8041-7d2f362af17b"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:4000/configuration-item",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"configuration-item"
-					]
+				{
+					"name": "solution all",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/solution/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"solution",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "solution id put",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"configurationItemId\": \"f62b0f34-6a74-4689-85bc-492e675639f5\",\n  \"category\": \"teste\",\n  \"type\": \"teste\",\n  \"description\": \"teste\",\n  \"solution\": \"reiniciar impressora\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/solution/af208736-afe7-4481-ba21-c6866b60f646",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"solution",
+								"af208736-afe7-4481-ba21-c6866b60f646"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Solution/all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/solution",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"solution"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "solution id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/solution/af208736-afe7-4481-ba21-c6866b60f646",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"solution",
+								"af208736-afe7-4481-ba21-c6866b60f646"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "solution",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"configurationItemId\": \"f62b0f34-6a74-4689-85bc-492e675639f5\",\n  \"category\": \"Hardware\",\n  \"type\": \"Hardware\",\n  \"description\": \"mal funcionamiento de impresora\",\n  \"solution\": \"reiniciar impressora\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/solution",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"solution"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "Incident",
+			"item": [
+				{
+					"name": "Incident",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"incidentAlias\":\"teste top\",\n    \"configurationItemId\":\"342e9175-87aa-4f67-bdfc-ae7d729e47a7\",\n    \"workaround\": \"nao entendi esse cadastro\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/incident",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"incident"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Incident All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/incident",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"incident"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Incident id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"incidentId\": \"3bee9b87-025b-4631-9e2f-a398903e60bf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/incident",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"incident"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

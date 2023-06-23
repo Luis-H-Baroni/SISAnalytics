@@ -2,7 +2,6 @@ const { incidentService, configurationItemService } = require('../services')
 
 exports.getIncidents = async (req, res) => {
   try {
-    console.log(req.query)
     const result = await incidentService.getIncidents(req.query)
     return res.status(200).json(result)
   } catch (error) {

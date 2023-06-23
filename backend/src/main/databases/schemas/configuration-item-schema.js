@@ -1,8 +1,7 @@
 const db = require('../mongodb')
-const { identifierGenerator } = require('../../../utils/helpers')
 
 const configurationItemSchema = new db.Schema({
-  configurationItemId: { type: String, default: identifierGenerator.uuid() },
+  configurationItemId: String,
   configurationItemAlias: String,
   serial: String,
   category: String,
@@ -21,6 +20,6 @@ const configurationItemSchema = new db.Schema({
   updatedAt: { type: Date, default: Date.now() },
 })
 
-const EventModel = db.model('ConfigurationItemSchema', configurationItemSchema)
+const ConfigurationItemModel = db.model('ConfigurationItemSchema', configurationItemSchema)
 
-module.exports = EventModel
+module.exports = ConfigurationItemModel

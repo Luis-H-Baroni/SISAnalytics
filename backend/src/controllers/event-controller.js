@@ -2,7 +2,6 @@ const { eventService, configurationItemService } = require('../services')
 
 exports.getEvents = async (req, res) => {
   try {
-    console.log(req.query)
     const result = await eventService.getEvents(req.query)
     return res.status(200).json(result)
   } catch (error) {
@@ -16,7 +15,6 @@ exports.createEvent = async (req, res) => {
     const existingItem = await configurationItemService.configurationItemGetId(
       req.body.configurationItemId
     )
-    console.log(existingItem)
     if (!existingItem)
       return res.status(400).json({ message: 'Item not found' })
 

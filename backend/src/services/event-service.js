@@ -33,14 +33,14 @@ exports.incidentHandler = async (payload, socket) => {
 exports.getEvents = async (payload) => {
   const result = await eventRepository.getEvents(payload)
 
-  if (result.length === 0) return null
+  if (result.length === 0) return []
   return result
 }
 
 exports.getEventById = async (payload) => {
   const result = await eventRepository.getEventById(payload)
   console.log(result)
-  if (!result) return null
+  if (!result) return []
   return result
 }
 

@@ -9,6 +9,7 @@ exports.configurationItem = (router) => {
     requestValidator.validate(configurationItemSchema),
     configurationItemController.configurationItemCreate
   )
+  router.route('/configuration-item/:id').put(configurationItemController.configurationItemUpdateId)
   router.route('/configuration-item').delete(configurationItemController.configurationItemDeleteAll)
   router.route('/configuration-item/:id').delete(configurationItemController.configurationItemDeleteId)
 }
