@@ -5,6 +5,7 @@ const configurationItemController = require('./configuration-item-controller')
 const eventController = require('./event-controller')
 const incidentController = require('./incident-controller')
 const solutionController = require('./solution-controller')
+const temperatureHumidityController = require('./temperature-humidity-controller')
 
 module.exports = {
   exampleController,
@@ -13,5 +14,6 @@ module.exports = {
   configurationItemController,
   eventController,
   incidentController,
-  solutionController
+  solutionController,
+  temperatureHumidityController
 }
