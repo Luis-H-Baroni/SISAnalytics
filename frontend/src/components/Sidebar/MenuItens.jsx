@@ -1,5 +1,5 @@
 import Chart_fill from '../../assets/Chart_fill.png';
-import Chat from '../../assets/Chat.png';
+// import Chat from '../../assets/Chat.png';
 import User from '../../assets/User.png';
 import Calendar from '../../assets/Calendar.png';
 import Search from '../../assets/Search.png';
