@@ -11,7 +11,7 @@ exports.registerLog = (socket) => {
   socket.on('system_info', (payload) => {
     logService.registerWorkstationLog(payload)
     const data = JSON.parse(payload)
-    socket.broadcast.emit('system_info_ram', data)
+    socket.broadcast.emit('system_info_dashboard', data)
   })
 }
 
