@@ -10,11 +10,13 @@ exports.test = (socket) => {
 exports.registerLog = (socket) => {
   socket.on('system_info', (payload) => {
     logService.registerWorkstationLog(payload)
+    const data = JSON.parse(payload)
+    socket.broadcast.emit('system_info_dashboard', data)
   })
 }
 
 exports.emitEvent = (socket) => {
   socket.on('incident', (payload) => {
-    eventService.incidentHandler(payload)
+    eventService.incidentHandler(payload, socket)
   })
 }
