@@ -1,8 +1,7 @@
 const Joi = require('joi')
 
 const temperatureHumiditySchema = Joi.object({
-  itemAlias: Joi.string().required(),
-  configurationItemId: Joi.string().required(),
+  configurationItemAlias: Joi.string().required(),
   data: Joi.object({
     celsius: Joi.string().required(),
     fareinheit: Joi.string().required(),

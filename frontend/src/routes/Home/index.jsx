@@ -68,12 +68,10 @@ function Home(props) {
       console.log("system_info_dashboard");
       console.log("info data", data);
 
-      const newFirstRamData = { ...firstRamChartData };
-      const newFirstRomData = { ...firstRomChartData };
-      const newSecondRamData = { ...secondRamChartData };
-      const newSecondRomData = { ...secondRomChartData };
-
       if (data.hostname === "DESKTOP-1") {
+        const newFirstRamData = { ...firstRamChartData };
+        const newFirstRomData = { ...firstRomChartData };
+
         newFirstRamData.labels.push(data.hostname);
         newFirstRomData.labels.push(data.hostname);
 
@@ -95,6 +93,9 @@ function Home(props) {
       }
 
       if (data.hostname === "DESKTOP-2") {
+        const newSecondRamData = { ...secondRamChartData };
+        const newSecondRomData = { ...secondRomChartData };
+
         newSecondRamData.labels.push(data.hostname);
         newSecondRomData.labels.push(data.hostname);
 
@@ -114,8 +115,32 @@ function Home(props) {
         setSecondRamChartData(newSecondRamData);
         setSecondRomChartData(newSecondRomData);
       }
+
+      if (data.configurationItemAlias === "ESP32") {
+        const newTemperatureData = { ...temperatureData };
+        const newHumidityData = { ...humidityData };
+
+        newTemperatureData.labels.push(data.configurationItemAlias);
+        newHumidityData.labels.push(data.configurationItemAlias);
+
+        newTemperatureData.datasets[0].data.push(data.data.celsius);
+        newHumidityData.datasets[0].data.push(data.data.umidity);
+
+        if (newTemperatureData.labels.length > 5) {
+          newTemperatureData.labels.shift();
+          newTemperatureData.datasets[0].data.shift();
+        }
+
+        if (newHumidityData.labels.length > 5) {
+          newHumidityData.labels.shift();
+          newHumidityData.datasets[0].data.shift();
+        }
+
+        setTemperatureData(newTemperatureData);
+        setHumidityData(newHumidityData);
+      }
     });
-    return () => socket.off("system_info_ram");
+    return () => socket.off("system_info_dashboard");
   }, []);
 
   return (

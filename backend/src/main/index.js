@@ -22,3 +22,5 @@ socket(io)
 server.listen(process.env.API_PORT, () =>
   console.log(`API running on http://localhost:${process.env.API_PORT}/`)
 )
+
+module.exports.socketObject = io
