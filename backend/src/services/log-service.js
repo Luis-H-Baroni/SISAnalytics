@@ -1,6 +1,6 @@
 const { logRepository } = require('../repositories')
 
-exports.registerWorkstationLog = (payload) => {
+exports.registerWorkstationLog = (payload, socket) => {
   const data = JSON.parse(payload)
   const { ram, rom, cpuTemp, hostname, createdAt } = data
 
@@ -16,6 +16,7 @@ exports.registerWorkstationLog = (payload) => {
   }
 
   logRepository.registerLog(logRegister)
+  socket.broadcast.emit('system_info_dashboard', data)
 }
 
 exports.getLogs = async (payload) => {

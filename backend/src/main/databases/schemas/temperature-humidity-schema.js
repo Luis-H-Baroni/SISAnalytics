@@ -1,9 +1,9 @@
 const db = require('../mongodb')
+const { identifierGenerator } = require('../../../utils/helpers')
 
 const temperatureHumiditySchema = new db.Schema({
-  itemAlias: String,
-  espId: String,
-  configurationItemId: String,
+  logId: { type: String, default: identifierGenerator.uuid() },
+  configurationItemAlias: String,
   data: {
     celsius: String,
     fareinheit: String,
@@ -11,7 +11,9 @@ const temperatureHumiditySchema = new db.Schema({
   },
 })
 
-
-const TemperatureHumidityModel = db.model('TemperatureHumiditySchema', temperatureHumiditySchema)
+const TemperatureHumidityModel = db.model(
+  'TemperatureHumiditySchema',
+  temperatureHumiditySchema
+)
 
 module.exports = TemperatureHumidityModel

@@ -20,3 +20,7 @@ exports.emitEvent = (socket) => {
     eventService.incidentHandler(payload, socket)
   })
 }
+
+exports.getSocket = (socket) => {
+  return socket
+}
