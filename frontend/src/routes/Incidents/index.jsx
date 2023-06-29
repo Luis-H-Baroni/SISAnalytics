@@ -223,7 +223,7 @@ function Incident () {
       <TopTitleButton title='Incidentes' button='Adicionar +' onClickFunction={(e) => handleAdd(e) }/>
       
       <IncidentTable headers={handleHeader} data={incidentList} remove={handleRemove} edit={handleEdit} />
-      
+           
       {open && handleRenderModal()}
     </>
   );

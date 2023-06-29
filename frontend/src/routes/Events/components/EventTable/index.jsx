@@ -42,7 +42,7 @@ function EventTable ({ headers, data, remove, edit }) {
               <thead className="border-b font-medium dark:border-neutral-500">
                 <tr>
                   {headers.map((header) => (
-                    <th scope="col" className="px-6 py-4" key={header.key} >{header.name}</th>  
+                    <th scope="col" className="px-6 py-4" key={Math.random()} >{header.name}</th>  
                   ))}
                 </tr>
               </thead>
@@ -56,15 +56,15 @@ function EventTable ({ headers, data, remove, edit }) {
                       <>
                         <td className="whitespace-nowrap px-6 py-4" key={`${item.eventId}-key`}>{item.eventId}</td>
                         <td className="whitespace-nowrap px-6 py-4" key={`${item.eventAlias}-key`}>{item.eventAlias}</td>
-                        <td className="whitespace-nowrap px-6 py-4" key={`${item.impact}-key`}>{item.impact}</td>
-                        <td className="whitespace-nowrap px-6 py-4" key={`${item.urgency}-key`}>{item.urgency}</td>
+                        <td className="whitespace-nowrap px-6 py-4" key={Math.random()}>{item.impact}</td>
+                        <td className="whitespace-nowrap px-6 py-4" key={Math.random()}>{item.urgency}</td>
                         <td className="whitespace-nowrap px-6 py-4" key={`${item.configurationItemAlias}-key`}>{item.configurationItemAlias}</td>
-                        <td className="whitespace-nowrap px-6 py-4" key='item.actions-key'>
+                        <td className="whitespace-nowrap px-6 py-4" key={Math.random()}>
                           <button className="text-gray-500 hover:text-gray-700 ml-1" onClick={() => handleEdit(item.eventId) }>
-                            <IoPencilSharp size={20} />
+                            <IoPencilSharp size={20} key={Math.random()} />
                           </button>
                           <button className="text-red-500 hover:text-red-700" onClick={() => { handleOpenModal(item.eventId) }}>
-                            <IoTrash size={20} />
+                            <IoTrash size={20} key={Math.random()} />
                           </button>
                         </td>
                       </>

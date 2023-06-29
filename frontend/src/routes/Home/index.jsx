@@ -65,8 +65,8 @@ function Home(props) {
   useEffect(() => {
     const socket = io.connect("http://localhost:4000");
     socket.on("system_info_dashboard", (data) => {
-      console.log("system_info_dashboard");
-      console.log("info data", data);
+      // console.log("system_info_dashboard");
+      // console.log("info data", data);
 
       if (data.hostname === "DESKTOP-1") {
         const newFirstRamData = { ...firstRamChartData };

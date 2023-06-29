@@ -11,10 +11,10 @@ Professores:
 
 Trabalho realizado pelos alunos:
 
-- Eduarda Bento 389342
-- Isabela Maria Da Campo 389831
-- Luis Baroni 370589
-- Maria Fagundes 389299
+- Eduarda Bento - 389342
+- Isabela Maria Da Campo - 389831
+- Luis Baroni - 370589
+- Maria Fagundes - 389299
 
 ## Tecnologia
 
