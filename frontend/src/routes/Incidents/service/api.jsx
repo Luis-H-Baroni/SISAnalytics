@@ -1,5 +1,14 @@
 import { api } from '../../../services/http';
 
+export const getEvents = async () => {
+  try {
+    const response = await api.get('/event')
+    return response.data;
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const getIncident = async () => {
   try {
     const response = await api.get('incident');
