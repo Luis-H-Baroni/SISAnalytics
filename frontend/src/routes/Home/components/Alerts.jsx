@@ -9,7 +9,6 @@ function Alerts() {
   useEffect(() => {
     const socket = io.connect("http://localhost:4000");
     socket.on("active_incident", (data) => {
-      console.log(data);
       const newAlerts = alerts;
       const existingAlert = newAlerts.find(
         (alert) => alert.eventAlias === data.eventAlias
@@ -30,7 +29,6 @@ function Alerts() {
       }
 
       setAlerts(newAlerts);
-      console.log(alerts);
     });
     return () => socket.off("active_incident");
   }, [alerts]);
