@@ -3,6 +3,7 @@ import LineChart from "./components/LineChart";
 import { Chart } from "chart.js/auto";
 import { useState, useEffect } from "react";
 import io from "socket.io-client";
+import Alerts from "./components/Alerts";
 
 function Home(props) {
   const [firstRamChartData, setFirstRamChartData] = useState({
@@ -65,8 +66,8 @@ function Home(props) {
   useEffect(() => {
     const socket = io.connect("http://localhost:4000");
     socket.on("system_info_dashboard", (data) => {
-      console.log("system_info_dashboard");
-      console.log("info data", data);
+      /* console.log("system_info_dashboard");
+      console.log("info data", data); */
 
       if (data.hostname === "DESKTOP-1") {
         const newFirstRamData = { ...firstRamChartData };
@@ -163,6 +164,9 @@ function Home(props) {
             <LineChart chartData={temperatureData} />
             <LineChart chartData={humidityData} />
           </div>
+        </div>
+        <div>
+          <Alerts />
         </div>
       </div>
     </div>

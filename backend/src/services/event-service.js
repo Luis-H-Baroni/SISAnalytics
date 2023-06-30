@@ -10,24 +10,23 @@ exports.incidentHandler = async (payload, socket) => {
   const incidentKey = incidentAdapter.incidentKey(data)
   console.log('Incident Key', incidentKey)
 
-  if (incidentEvents.has(incidentKey)) return
-
   const event = await eventRepository.getEventByEventAlias({
     eventAlias: incidentKey,
   })
 
-  incidentEvents.set(incidentKey, { ...event, log: data })
+  if (!incidentEvents.has(incidentKey)) {
+    incidentEvents.set(incidentKey, { ...event, log: data })
 
-  incidentRepository.createIncident({
-    incidentId: identifierGenerator.uuid(),
-    incidentAlias: event.eventAlias,
-    configurationItemId: event.configurationItemId,
-    configurationItemAlias: event.configurationItemAlias,
-    workaround: event.workaround, //todo: definir escolha de workaround
-  })
-  console.log('Incident detected', incidentKey)
-
-  socket.broadcast.emit('active_incident', event.eventId)
+    incidentRepository.createIncident({
+      incidentId: identifierGenerator.uuid(),
+      incidentAlias: event.eventAlias,
+      configurationItemId: event.configurationItemId,
+      configurationItemAlias: event.configurationItemAlias,
+      workaround: event.workaround, //todo: definir escolha de workaround
+    })
+    console.log('Incident detected', incidentKey)
+  }
+  socket.broadcast.emit('active_incident', event)
 }
 
 exports.getEvents = async (payload) => {

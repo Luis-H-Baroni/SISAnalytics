@@ -15,12 +15,10 @@ exports.incident = (router) => {
       requestValidator.validate(incidentSchema.createIncidentSchema),
       incidentController.createIncident
     )
-  router
-    .route('/incident')
-    .delete(
-      requestValidator.validate(incidentSchema.deleteIncidentSchema),
-      incidentController.deleteIncident
-    )
+  router.route('/incident').delete(
+    //requestValidator.validate(incidentSchema.deleteIncidentSchema),
+    incidentController.deleteIncident
+  )
   router
     .route('/incident')
     .put(
